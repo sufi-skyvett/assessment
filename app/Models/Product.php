@@ -17,13 +17,4 @@ class Product extends Model
         'is_published' => 'boolean',
     ];
 
-    // public function getPriceAttribute($value)
-    // {
-    //     return '$' . number_format($value, 2);
-    // }
-
-    // public function setPriceAttribute($value)
-    // {
-    //     $this->attributes['price'] = (float) $value;
-    // }
 }

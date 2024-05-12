@@ -77,18 +77,26 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
-        $updateresource = Resource::find($id);
-        $updateresource->name = $request->input('resourcename');
-        $updateresource->description = $request->input('resourcedescription');
+        $validatedData = $request->validate([
+            'productname' => 'required|string|max:255',
+            'productprice' => 'required|numeric',
+            'productdescription' => 'nullable|string',
+            'publish' => 'required|in:yes,no',
+        ]);
 
-        $updateresource->update();
-        $updateresource->projects()->attach($request->input('project_id'), ['created_at' => now(), 'updated_at' => now()]);
-        //$updateresource->projects()->sync([$request->input('project_id') => ['created_at' => now(), 'updated_at' => now()]]);
-        //dd($request);
-        return redirect()->route('resources.index')->with('success', 'Resource updated successfully');
+        $product = Product::findOrFail($id);
+        $product->name = $request->input('productname');
+        $product->price = $request->input('productprice');
+        $product->details = $request->input('productdetails');
+        $product->is_published = $request->input('publish') == 'yes' ? true : false;
+
+        $product->save();
+
+        // Redirect back with success message or do whatever you want
+        return redirect()->route('products.index')
+            ->with('success', 'Product updated successfully');
     }
 
     /**
@@ -97,10 +105,23 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         //
-        $taskdata = Task::find($id);
+        $productdata = Product::findOrFail($id);
 
-        $taskdata->delete();
-        return redirect()->route('tasks.index')
-            ->with('success', 'Project deleted successfully');
+        $productdata->delete();
+        return redirect()->route('products.index')
+            ->with('success', 'Product deleted successfully');
+    }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+
+        // Perform the search query
+        $products = Product::where('name', 'LIKE', "%$searchTerm%")
+            ->orWhere('details', 'LIKE', "%$searchTerm%")
+            ->get();
+       
+        // Pass the search results to the view
+        return view('index', compact('products', 'searchTerm'));
     }
 }

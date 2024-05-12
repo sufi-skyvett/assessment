@@ -79,18 +79,16 @@
                                     @csrf
                                     @method('DELETE')
                                     <a class="btn btn-info btn-sm" href="{{ route('products.show', $product->id) }}">
-                                        <i class="fas fa-folder">
-                                        </i>
+                                        
                                         View
                                     </a>
                                     <a class="btn btn-primary btn-sm" href="{{ route('products.edit', $product->id) }}">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
+                                       
                                         Edit
                                     </a>
                                     <a class="btn btn-danger btn-sm"
                                         onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this product?')) { document.getElementById('delete-form-{{ $product->id }}').submit(); }">
-                                        <i class="fas fa-trash"></i> Delete
+                                        Delete
                                     </a>
 
                                 </form>

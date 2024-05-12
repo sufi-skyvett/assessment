@@ -59,9 +59,9 @@
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->details }}</td>
-                            <td>{{ $product->is_published }}</td>
+                            <td>{{ $product->is_published ? 'Yes' : 'No' }}</td>
                             <td>
-                                <form action="{{ route('resources.destroy', $product->id) }}" method="POST">
+                                <form action="{{ route('products.destroy', $product->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <a class="btn btn-primary btn-sm" href="{{ route('products.show', $product->id) }}">

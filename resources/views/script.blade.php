@@ -22,13 +22,7 @@
 <script src="{{ URL::asset('adminlte3/plugins/chart.js/Chart.min.js') }}"></script>
 <!-- Sparkline -->
 <script src="{{ URL::asset('adminlte3/plugins/sparklines/sparkline.js') }}"></script>
-<!-- JQVMap -->
-{{-- <script src="{{ URL::asset('adminlte3/plugins/jqvmap/jquery.vmap.min.js') }}"></script> --}}
 
-{{-- <script src="{{ URL::asset('adminlte3/adminlte3/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script> --}}
-<!-- jQuery Knob Chart -->
-{{-- <script src="{{ URL::asset('adminlte3/plugins/jquery-knob/jquery.knob.min.js') }}"></script> --}}
-<!-- daterangepicker -->
 <script src="{{ URL::asset('adminlte3/plugins/moment/moment.min.js') }}"></script>
 
 <!-- jQuery UI -->
@@ -44,13 +38,9 @@
 {{-- <script src="{{ URL::asset('adminlte3/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script> --}}
 <!-- AdminLTE App -->
 <script src="{{ URL::asset('adminlte3/dist/js/adminlte.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-{{-- <script src="{{ URL::asset('adminlte3/dist/js/demo.js') }}"></script> --}}
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-{{-- <script src="{{ URL::asset('adminlte3/dist/js/pages/dashboard.js') }}"></script> --}}
 
 
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     //Initialize Select2 Elements
     $('.select2').select2()
 
@@ -58,4 +48,4 @@
     $('.select2bs4').select2({
         theme: 'bootstrap4'
     })
-</script>
+</script> --}}

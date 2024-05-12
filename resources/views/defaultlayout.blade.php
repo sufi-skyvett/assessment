@@ -108,7 +108,7 @@
             background-color: #1A3731 !important
         }
     </style>
-    <script>
+    {{-- <script>
         window.addEventListener("load", () => {
             const myTimeout = setTimeout(myLoad, 2000);
             const loader = document.querySelector(".loader");
@@ -123,7 +123,7 @@
             }
 
         });
-    </script>
+    </script> --}}
 
 </head>
 

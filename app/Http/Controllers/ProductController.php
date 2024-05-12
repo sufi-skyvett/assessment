@@ -58,26 +58,9 @@ class ProductController extends Controller
     public function show(string $id)
     {
         //
-        //
-        $resource = Product::find($id);
-        // $latestProject = $resource->projects()->orderBy('created_at', 'desc')->first();
-        $latestProject = DB::table('projects')
-            ->join('project_resource', 'projects.id', '=', 'project_resource.project_id')
-            ->select('projects.*')
-            ->where('project_resource.resource_id', $id)
-            ->orderBy('project_resource.created_at', 'desc')
-            ->first();
-
-        $resourceProjects = DB::table('projects')
-            ->join('project_resource', 'projects.id', '=', 'project_resource.project_id')
-            ->where('project_resource.resource_id', $id)
-            ->orderBy('project_resource.created_at', 'desc')
-            ->select('projects.*', 'project_resource.created_at as pivot_created_at')
-            ->get();
-
-        //dd($resourceProjects);
+        $product = Product::findOrFail($id);
+        // dd($product);
         return view('show', compact('product'));
-
     }
 
     /**
@@ -86,7 +69,9 @@ class ProductController extends Controller
     public function edit(string $id)
     {
         //
-        return view('resources.edit', compact('resource', 'projects'));
+        $product = Product::findOrFail($id);
+
+        return view('edit', compact('product'));
     }
 
     /**

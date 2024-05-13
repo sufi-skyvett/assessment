@@ -7,10 +7,10 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="" class="nav-link">HOME</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
+        {{-- <li class="nav-item d-none d-sm-inline-block">
             <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#modal-sm">LOG
                 OUT</button>
-        </li>
+        </li> --}}
     </ul>
 
     <!-- Right navbar links -->
@@ -151,7 +151,7 @@
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" href=""
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">YES</button>
-                <form id="logout-form" action="" method="POST" style="display: none;">
+                <form id="logout-form" action="{{ route('products.create') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
                 <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
